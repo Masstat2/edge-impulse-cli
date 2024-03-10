@@ -89,3 +89,9 @@ export class KerasVisualLayer {
     }
 }
 
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasVisualLayer.ts
+=======
+
+export type KerasVisualLayerTypeEnum = 'dense' | 'conv1d' | 'conv2d' | 'reshape' | 'flatten' | 'dropout' | 'batchNormalization' | 'transfer_mobilenetv2_a35' | 'transfer_mobilenetv2_a1' | 'transfer_mobilenetv2_a05';
+export const KerasVisualLayerTypeEnumValues: string[] = ['dense', 'conv1d', 'conv2d', 'reshape', 'flatten', 'dropout', 'batchNormalization', 'transfer_mobilenetv2_a35', 'transfer_mobilenetv2_a1', 'transfer_mobilenetv2_a05'];
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasVisualLayer.ts

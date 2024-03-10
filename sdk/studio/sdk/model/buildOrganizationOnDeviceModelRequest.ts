@@ -42,3 +42,9 @@ export class BuildOrganizationOnDeviceModelRequest {
     }
 }
 
+<<<<<<< HEAD:sdk/studio/sdk/model/buildOrganizationOnDeviceModelRequest.ts
+=======
+
+export type BuildOrganizationOnDeviceModelRequestEngineEnum = 'tflite' | 'tflite-eon';
+export const BuildOrganizationOnDeviceModelRequestEngineEnumValues: string[] = ['tflite', 'tflite-eon'];
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/buildOrganizationOnDeviceModelRequest.ts

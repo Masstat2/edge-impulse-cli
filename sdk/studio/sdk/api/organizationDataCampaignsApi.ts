@@ -24,6 +24,7 @@ import { AddOrganizationDataCampaignDashboardResponse } from '../model/addOrgani
 import { AddOrganizationDataCampaignRequest } from '../model/addOrganizationDataCampaignRequest';
 import { AddOrganizationDataCampaignResponse } from '../model/addOrganizationDataCampaignResponse';
 import { GenericApiResponse } from '../model/genericApiResponse';
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
 import { GetOrganizationDataCampaignDashboardResponse } from '../model/getOrganizationDataCampaignDashboardResponse';
 import { GetOrganizationDataCampaignDashboardsResponse } from '../model/getOrganizationDataCampaignDashboardsResponse';
 import { GetOrganizationDataCampaignResponse } from '../model/getOrganizationDataCampaignResponse';
@@ -32,6 +33,13 @@ import { OrganizationDataCampaignDiffRequest } from '../model/organizationDataCa
 import { OrganizationDataCampaignDiffResponse } from '../model/organizationDataCampaignDiffResponse';
 import { UpdateOrganizationDataCampaignDashboardRequest } from '../model/updateOrganizationDataCampaignDashboardRequest';
 import { UpdateOrganizationDataCampaignRequest } from '../model/updateOrganizationDataCampaignRequest';
+=======
+import { RemoveMemberRequest } from '../model/removeMemberRequest';
+import { SetMemberDatasetsRequest } from '../model/setMemberDatasetsRequest';
+import { SetMemberRoleRequest } from '../model/setMemberRoleRequest';
+import { UpdateOrganizationBucketRequest } from '../model/updateOrganizationBucketRequest';
+import { UpdateOrganizationRequest } from '../model/updateOrganizationRequest';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
 
 import { ObjectSerializer, Authentication, VoidAuth } from '../model/models';
 import { HttpBasicAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -47,7 +55,6 @@ let defaultBasePath = 'https://studio.edgeimpulse.com/v1';
 export enum OrganizationDataCampaignsApiApiKeys {
     ApiKeyAuthentication,
     JWTAuthentication,
-    JWTHttpHeaderAuthentication,
 }
 
 type uploadDashboardScreenshotFormParams = {
@@ -71,7 +78,6 @@ export class OrganizationDataCampaignsApi {
         'default': <Authentication>new VoidAuth(),
         'ApiKeyAuthentication': new ApiKeyAuth('header', 'x-api-key'),
         'JWTAuthentication': new ApiKeyAuth('cookie', 'jwt'),
-        'JWTHttpHeaderAuthentication': new ApiKeyAuth('header', 'x-jwt-token'),
     }
 
     constructor(basePath?: string, opts?: OrganizationDataCampaignsApiOpts);
@@ -175,8 +181,6 @@ export class OrganizationDataCampaignsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -267,8 +271,6 @@ export class OrganizationDataCampaignsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -332,11 +334,85 @@ export class OrganizationDataCampaignsApi {
             throw new Error('Required parameter organizationId was null or undefined when calling deleteOrganizationDataCampaign.');
         }
 
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
         // verify required parameter 'campaignId' is not null or undefined
 
 
         if (campaignId === null || campaignId === undefined) {
             throw new Error('Required parameter campaignId was null or undefined when calling deleteOrganizationDataCampaign.');
+=======
+        // verify required parameter 'addMemberRequest' is not null or undefined
+        if (addMemberRequest === null || addMemberRequest === undefined) {
+            throw new Error('Required parameter addMemberRequest was null or undefined when calling addOrganizationMember.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(addMemberRequest, "AddMemberRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GenericApiResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Remove the current organization, and all data associated with it. This is irrevocable!
+     * @summary Remove organization
+     * @param organizationId Organization ID
+     */
+    public async deleteOrganization (organizationId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}'
+            .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling deleteOrganization.');
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -359,8 +435,11 @@ export class OrganizationDataCampaignsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -370,12 +449,17 @@ export class OrganizationDataCampaignsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
             return new Promise<GenericApiResponse>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
                         body = ObjectSerializer.deserialize(body, "GenericApiResponse");
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
 
@@ -387,12 +471,19 @@ export class OrganizationDataCampaignsApi {
                         }
                         else {
                             reject(errString);
+=======
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
 
     /**
      * Delete a data campaign dashboard
@@ -402,6 +493,16 @@ export class OrganizationDataCampaignsApi {
      */
     public async deleteOrganizationDataCampaignDashboard (organizationId: number, campaignDashboardId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<GenericApiResponse> {
         const localVarPath = this.basePath + '/api/organizations/{organizationId}/campaign-dashboard/{campaignDashboardId}'
+=======
+    /**
+     * Remove a storage bucket. This will render any data in this storage bucket unreachable.
+     * @summary Remove storage bucket
+     * @param organizationId Organization ID
+     * @param bucketId Bucket ID
+     */
+    public async removeOrganizationBucket (organizationId: number, bucketId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}/buckets/{bucketId}'
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
             .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)))
             .replace('{' + 'campaignDashboardId' + '}', encodeURIComponent(String(campaignDashboardId)));
         let localVarQueryParameters: any = {};
@@ -451,8 +552,6 @@ export class OrganizationDataCampaignsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -492,8 +591,87 @@ export class OrganizationDataCampaignsApi {
      * @param organizationId Organization ID
      * @param campaignId 
      */
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
     public async getOrganizationDataCampaign (organizationId: number, campaignId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<GetOrganizationDataCampaignResponse> {
         const localVarPath = this.basePath + '/api/organizations/{organizationId}/campaigns/{campaignId}'
+=======
+    public async removeOrganizationMember (organizationId: number, removeMemberRequest: RemoveMemberRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}/members/remove'
+            .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling removeOrganizationMember.');
+        }
+
+        // verify required parameter 'removeMemberRequest' is not null or undefined
+        if (removeMemberRequest === null || removeMemberRequest === undefined) {
+            throw new Error('Required parameter removeMemberRequest was null or undefined when calling removeOrganizationMember.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(removeMemberRequest, "RemoveMemberRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GenericApiResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Revoke an API key.
+     * @summary Revoke API key
+     * @param organizationId Organization ID
+     * @param apiKeyId API key ID
+     */
+    public async revokeOrganizationApiKey (organizationId: number, apiKeyId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}/apikeys/{apiKeyId}'
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
             .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)))
             .replace('{' + 'campaignId' + '}', encodeURIComponent(String(campaignId)));
         let localVarQueryParameters: any = {};
@@ -516,11 +694,246 @@ export class OrganizationDataCampaignsApi {
             throw new Error('Required parameter organizationId was null or undefined when calling getOrganizationDataCampaign.');
         }
 
+<<<<<<< HEAD:sdk/studio/sdk/api/organizationDataCampaignsApi.ts
         // verify required parameter 'campaignId' is not null or undefined
 
 
         if (campaignId === null || campaignId === undefined) {
             throw new Error('Required parameter campaignId was null or undefined when calling getOrganizationDataCampaign.');
+=======
+        // verify required parameter 'apiKeyId' is not null or undefined
+        if (apiKeyId === null || apiKeyId === undefined) {
+            throw new Error('Required parameter apiKeyId was null or undefined when calling revokeOrganizationApiKey.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'DELETE',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GenericApiResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Set the datasets a guest member has access to in an organization.
+     * @summary Set member datasets
+     * @param organizationId Organization ID
+     * @param memberId Member ID
+     * @param setMemberDatasetsRequest 
+     */
+    public async setOrganizationMemberDatasets (organizationId: number, memberId: number, setMemberDatasetsRequest: SetMemberDatasetsRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}/members/{memberId}/datasets'
+            .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)))
+            .replace('{' + 'memberId' + '}', encodeURIComponent(String(memberId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling setOrganizationMemberDatasets.');
+        }
+
+        // verify required parameter 'memberId' is not null or undefined
+        if (memberId === null || memberId === undefined) {
+            throw new Error('Required parameter memberId was null or undefined when calling setOrganizationMemberDatasets.');
+        }
+
+        // verify required parameter 'setMemberDatasetsRequest' is not null or undefined
+        if (setMemberDatasetsRequest === null || setMemberDatasetsRequest === undefined) {
+            throw new Error('Required parameter setMemberDatasetsRequest was null or undefined when calling setOrganizationMemberDatasets.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(setMemberDatasetsRequest, "SetMemberDatasetsRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GenericApiResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Change the role of a member in an organization.
+     * @summary Set member role
+     * @param organizationId Organization ID
+     * @param memberId Member ID
+     * @param setMemberRoleRequest 
+     */
+    public async setOrganizationMemberRole (organizationId: number, memberId: number, setMemberRoleRequest: SetMemberRoleRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}/members/{memberId}/role'
+            .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)))
+            .replace('{' + 'memberId' + '}', encodeURIComponent(String(memberId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling setOrganizationMemberRole.');
+        }
+
+        // verify required parameter 'memberId' is not null or undefined
+        if (memberId === null || memberId === undefined) {
+            throw new Error('Required parameter memberId was null or undefined when calling setOrganizationMemberRole.');
+        }
+
+        // verify required parameter 'setMemberRoleRequest' is not null or undefined
+        if (setMemberRoleRequest === null || setMemberRoleRequest === undefined) {
+            throw new Error('Required parameter setMemberRoleRequest was null or undefined when calling setOrganizationMemberRole.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(setMemberRoleRequest, "SetMemberRoleRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GenericApiResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Test endpoint that can only be reached with admin rights.
+     * @summary Admin endpoint
+     * @param organizationId Organization ID
+     */
+    public async testOrganizationAdmin (organizationId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/{organizationId}/test-admin'
+            .replace('{' + 'organizationId' + '}', encodeURIComponent(String(organizationId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'organizationId' is not null or undefined
+        if (organizationId === null || organizationId === undefined) {
+            throw new Error('Required parameter organizationId was null or undefined when calling testOrganizationAdmin.');
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/organizationRequiresAdminApi.ts
         }
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
@@ -542,8 +955,6 @@ export class OrganizationDataCampaignsApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
@@ -718,8 +1129,6 @@ export class OrganizationDataCampaignsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -818,8 +1227,6 @@ export class OrganizationDataCampaignsApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {

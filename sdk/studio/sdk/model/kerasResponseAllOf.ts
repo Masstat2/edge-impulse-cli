@@ -28,7 +28,14 @@ export class KerasResponseAllOf {
     */
     'trained': boolean;
     'name': string;
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponseAllOf.ts
     'type'?: LearnBlockType;
+=======
+    /**
+    * The type of Keras block (keras, keras-transfer-image, keras-regression). Each behaves differently.
+    */
+    'type'?: KerasResponseAllOfTypeEnum;
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponseAllOf.ts
     /**
     * The Keras script. This script might be empty if the mode is visual.
     */
@@ -55,6 +62,7 @@ export class KerasResponseAllOf {
     */
     'learningRate': number;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponseAllOf.ts
     * The batch size used during training.
     */
     'batchSize'?: number;
@@ -72,6 +80,9 @@ export class KerasResponseAllOf {
     'trainTestSplit'?: number;
     /**
     * Whether to automatically balance class weights, use this for skewed datasets.
+=======
+    * Possible learning rates (between 0 and 1).
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponseAllOf.ts
     */
     'autoClassWeights'?: boolean;
     /**
@@ -164,6 +175,7 @@ export class KerasResponseAllOf {
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponseAllOf.ts
             "name": "batchSize",
             "baseName": "batchSize",
             "type": "number"
@@ -187,6 +199,11 @@ export class KerasResponseAllOf {
             "name": "autoClassWeights",
             "baseName": "autoClassWeights",
             "type": "boolean"
+=======
+            "name": "learningRates",
+            "baseName": "learningRates",
+            "type": "Array<number>"
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponseAllOf.ts
         },
         {
             "name": "findLearningRate",
@@ -255,5 +272,11 @@ export class KerasResponseAllOf {
 }
 
 
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponseAllOf.ts
+=======
+export type KerasResponseAllOfTypeEnum = 'keras' | 'keras-transfer-image' | 'keras-regression';
+export const KerasResponseAllOfTypeEnumValues: string[] = ['keras', 'keras-transfer-image', 'keras-regression'];
+
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponseAllOf.ts
 export type KerasResponseAllOfModeEnum = 'visual' | 'expert';
 export const KerasResponseAllOfModeEnumValues: string[] = ['visual', 'expert'];

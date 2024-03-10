@@ -34,6 +34,7 @@ export type BlockConfigItem = {
     name: string,
     description: string,
     id?: number,
+<<<<<<< HEAD
     organizationId: number,
     type: UploadCustomBlockRequestTypeEnum,
 } & ({
@@ -63,6 +64,9 @@ type BlockConfigV1 = {
     config: {
         [host: string]: BlockConfigItem
     }
+=======
+    organizationId: number
+>>>>>>> parent of 840c0ea (Release v1.13.10)
 };
 
 interface ExtractedFile {
@@ -354,6 +358,7 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
         let blockId: number | undefined;
         let blockName: string | undefined;
         let blockDescription: string | undefined;
+<<<<<<< HEAD
         let blockOperatesOn: 'file' | 'dataitem' | 'standalone' | undefined;
         let blockTlOperatesOn: OrganizationTransferLearningOperatesOn | undefined;
         let blockTlObjectDetectionLastLayer: ObjectDetectionLastLayer | undefined;
@@ -380,11 +385,22 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
                         value: p.id,
                         block: { description: p.description, name: p.name, operatesOn: p.operatesOn }
                     }
+=======
+
+        // Fetch all relevant existing blocks so the user can select an existing block to update
+        let existingBlocks: { name: string, value: number, block: { description: string, name: string } }[] = [];
+        if (blockTypeInqRes.type === 'transform') {
+            let blocks = await config.api.organizationBlocks.listOrganizationTransformationBlocks(organizationId);
+            if (blocks.body && blocks.body.transformationBlocks && blocks.body.transformationBlocks.length > 0) {
+                existingBlocks = blocks.body.transformationBlocks.map(p => (
+                    { name: p.name, value: p.id, block: { description: p.description, name: p.name } }
+>>>>>>> parent of 840c0ea (Release v1.13.10)
                 ));
             }
         }
         else if (blockType === 'deploy') {
             let blocks = await config.api.organizationBlocks.listOrganizationDeployBlocks(organizationId);
+<<<<<<< HEAD
             if (blocks.deployBlocks && blocks.deployBlocks.length > 0) {
                 existingBlocks = blocks.deployBlocks.map(p => (
                     {
@@ -392,6 +408,11 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
                         value: p.id,
                         block: { description: p.description, name: p.name, operatesOn: undefined }
                     }
+=======
+            if (blocks.body && blocks.body.deployBlocks && blocks.body.deployBlocks.length > 0) {
+                existingBlocks = blocks.body.deployBlocks.map(p => (
+                    { name: p.name, value: p.id, block: { description: p.description, name: p.name } }
+>>>>>>> parent of 840c0ea (Release v1.13.10)
                 ));
             }
         }
@@ -435,8 +456,7 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
                 {
                     name: 'Update an existing block',
                     value: 'update'
-                }
-            ],
+                }],
             name: 'option',
             message: 'Choose an option',
             pageSize: 20
@@ -457,7 +477,6 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
             if (selectedBlock) {
                 blockDescription = selectedBlock.block.description;
                 blockName = selectedBlock.block.name;
-                blockOperatesOn = selectedBlock.block.operatesOn;
             }
         }
 
@@ -508,6 +527,7 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
             if (blockDescription === '') blockDescription = blockName;
         }
 
+<<<<<<< HEAD
         if (createOrUpdateInqRes === 'create' && blockType === 'transform') {
             blockOperatesOn = <'file' | 'dataitem' | 'standalone'>(await inquirer.prompt([{
                 type: 'list',
@@ -648,6 +668,8 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
             }])).category;
         }
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10)
         // Create & write the config
         globalCurrentBlockConfig = globalCurrentBlockConfig || { version: 1, config: { } };
         globalCurrentBlockConfig.config[config.host] = blockId ? {
@@ -655,6 +677,7 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
             id: blockId,
             type: blockType,
             description: blockDescription,
+<<<<<<< HEAD
             organizationId,
             operatesOn: blockOperatesOn,
             tlObjectDetectionLastLayer: blockTlObjectDetectionLastLayer,
@@ -663,10 +686,14 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
             tlIndRequiresGpu: blockTlCanRunWhere === 'gpu',
             deployCategory: deployCategory,
             transformMountpoints: transformMountpoints,
+=======
+            organizationId
+>>>>>>> parent of 840c0ea (Release v1.13.10)
         } : {
             name: blockName,
             type: blockType,
             description: blockDescription,
+<<<<<<< HEAD
             organizationId,
             operatesOn: blockOperatesOn,
             tlObjectDetectionLastLayer: blockTlObjectDetectionLastLayer,
@@ -675,6 +702,9 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
             tlIndRequiresGpu: blockTlCanRunWhere === 'gpu',
             deployCategory: deployCategory,
             transformMountpoints: transformMountpoints,
+=======
+            organizationId
+>>>>>>> parent of 840c0ea (Release v1.13.10)
         };
 
         // console.log('Creating block with config:', globalCurrentBlockConfig);
@@ -842,6 +872,7 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
                         description: blockDescription,
                         dockerContainer: '',
                         indMetadata: true,
+<<<<<<< HEAD
                         cliArguments: '',
                         allowExtraCliArguments: parameters ? false : true,
                         operatesOn: currentBlockConfig.operatesOn || 'file',
@@ -853,6 +884,9 @@ let pushingBlockJobId: { organizationId: number, jobId: number } | undefined;
                             };
                         }),
                         parameters: parameters,
+=======
+                        cliArguments: ''
+>>>>>>> parent of 840c0ea (Release v1.13.10)
                     };
                     newResponse = await config.api.organizationBlocks.addOrganizationTransformationBlock(
                         organizationId, newBlockObject);

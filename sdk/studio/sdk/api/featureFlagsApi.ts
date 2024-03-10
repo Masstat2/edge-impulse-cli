@@ -96,11 +96,19 @@ export class FeatureFlagsApi {
 
 
     /**
+<<<<<<< HEAD:sdk/studio/sdk/api/featureFlagsApi.ts
      * Get the current global feature flags and whether they are enabled
      * @summary Get the current global feature flags and whether they are enabled
      */
     public async getFeatureFlags (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<GetFeatureFlagsResponse> {
         const localVarPath = this.basePath + '/api-feature-flags';
+=======
+     * Get container health.
+     * @summary Get container health
+     */
+    public async health (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GenericApiResponse;  }> {
+        const localVarPath = this.basePath + '/api-health';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/healthApi.ts
         let localVarQueryParameters: any = {};
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'

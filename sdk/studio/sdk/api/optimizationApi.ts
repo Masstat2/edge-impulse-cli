@@ -19,6 +19,7 @@ import localVarRequest = require('request');
 import http = require('http');
 
 /* tslint:disable:no-unused-locals */
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
 import { GenericApiResponse } from '../model/genericApiResponse';
 import { LogStdoutResponse } from '../model/logStdoutResponse';
 import { OptimizeConfig } from '../model/optimizeConfig';
@@ -30,6 +31,16 @@ import { OptimizeTransferLearningModelsResponse } from '../model/optimizeTransfe
 import { ScoreTrialResponse } from '../model/scoreTrialResponse';
 import { TunerCreateTrialImpulse } from '../model/tunerCreateTrialImpulse';
 import { WindowSettingsResponse } from '../model/windowSettingsResponse';
+=======
+import { CreateOrganizationRequest } from '../model/createOrganizationRequest';
+import { CreateOrganizationResponse } from '../model/createOrganizationResponse';
+import { FindUserResponse } from '../model/findUserResponse';
+import { GenericApiResponse } from '../model/genericApiResponse';
+import { GetUserResponse } from '../model/getUserResponse';
+import { ListEmailResponse } from '../model/listEmailResponse';
+import { SetProjectComputeTimeRequest } from '../model/setProjectComputeTimeRequest';
+import { SetProjectDspFileSizeRequest } from '../model/setProjectDspFileSizeRequest';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
 
 import { ObjectSerializer, Authentication, VoidAuth } from '../model/models';
 import { HttpBasicAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -45,7 +56,6 @@ let defaultBasePath = 'https://studio.edgeimpulse.com/v1';
 export enum OptimizationApiApiKeys {
     ApiKeyAuthentication,
     JWTAuthentication,
-    JWTHttpHeaderAuthentication,
 }
 
 type getDspParametersQueryParams = {
@@ -75,7 +85,6 @@ export class OptimizationApi {
         'default': <Authentication>new VoidAuth(),
         'ApiKeyAuthentication': new ApiKeyAuth('header', 'x-api-key'),
         'JWTAuthentication': new ApiKeyAuth('cookie', 'jwt'),
-        'JWTHttpHeaderAuthentication': new ApiKeyAuth('header', 'x-jwt-token'),
     }
 
     constructor(basePath?: string, opts?: OptimizationApiOpts);
@@ -188,8 +197,6 @@ export class OptimizationApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -246,6 +253,7 @@ export class OptimizationApi {
 
         // verify required parameter 'projectId' is not null or undefined
 
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
 
         if (projectId === null || projectId === undefined) {
             throw new Error('Required parameter projectId was null or undefined when calling deleteState.');
@@ -253,16 +261,30 @@ export class OptimizationApi {
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        if (query !== undefined) {
+            localVarQueryParameters['query'] = ObjectSerializer.serialize(query, "string");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
 
         let localVarUseFormData = false;
 
         let localVarRequestOptions: localVarRequest.Options = {
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
             method: 'DELETE',
+=======
+            method: 'GET',
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
             qs: localVarQueryParameters,
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
             agentOptions: {keepAlive: false},
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
             json: true,
         };
 
@@ -271,8 +293,11 @@ export class OptimizationApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -282,11 +307,16 @@ export class OptimizationApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
             return new Promise<GenericApiResponse>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: FindUserResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
                         body = ObjectSerializer.deserialize(body, "GenericApiResponse");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -299,16 +329,290 @@ export class OptimizationApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "FindUserResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
 
     /**
      * Get config
      * @summary Get config
+=======
+    /**
+     * Admin-only API to get information about a user.
+     * @summary Get user
+     * @param userId User ID
+     */
+    public async adminGetUser (userId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetUserResponse;  }> {
+        const localVarPath = this.basePath + '/api/admin/users/:userId'
+            .replace('{' + 'userId' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling adminGetUser.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GetUserResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GetUserResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Create a new organization. This is an internal API.
+     * @summary Create new organization
+     * @param createOrganizationRequest 
+     */
+    public async createOrganization (createOrganizationRequest: CreateOrganizationRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CreateOrganizationResponse;  }> {
+        const localVarPath = this.basePath + '/api/organizations/create';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'createOrganizationRequest' is not null or undefined
+        if (createOrganizationRequest === null || createOrganizationRequest === undefined) {
+            throw new Error('Required parameter createOrganizationRequest was null or undefined when calling createOrganization.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'POST',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+            body: ObjectSerializer.serialize(createOrganizationRequest, "CreateOrganizationRequest")
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: CreateOrganizationResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "CreateOrganizationResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Get a list of all emails sent by Edge Impulse to the current user. This function is only available through a JWT token, and is not available for all users.
+     * @summary List emails
+     */
+    public async listEmailsCurrentUser (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ListEmailResponse;  }> {
+        const localVarPath = this.basePath + '/api/user/emails';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: ListEmailResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "ListEmailResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Get a list of all emails sent by Edge Impulse to a user. This function is only available through a JWT token, and is not available for all users.
+     * @summary List emails
+     * @param userId User ID
+     */
+    public async listEmailsUser (userId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ListEmailResponse;  }> {
+        const localVarPath = this.basePath + '/api/users/{userId}/emails'
+            .replace('{' + 'userId' + '}', encodeURIComponent(String(userId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'userId' is not null or undefined
+        if (userId === null || userId === undefined) {
+            throw new Error('Required parameter userId was null or undefined when calling listEmailsUser.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: ListEmailResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "ListEmailResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Change the job compute time limit for the project. This function is only available through a JWT token, and is not available to all users.
+     * @summary Set compute time limit
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
      * @param projectId Project ID
      */
     public async getConfig (projectId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<OptimizeConfigResponse> {
@@ -353,8 +657,6 @@ export class OptimizationApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
@@ -461,6 +763,7 @@ export class OptimizationApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/optimizationApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
@@ -546,6 +849,8 @@ export class OptimizationApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/requiresSudoApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -811,8 +1116,6 @@ export class OptimizationApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {

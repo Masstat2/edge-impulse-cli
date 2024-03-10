@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // tslint:disable-next-line: variable-name, no-var-requires
 const PATH = require('path');
 // tslint:disable-next-line: no-unsafe-any
@@ -572,3 +573,8 @@ export class EdgeImpulseApi {
         });
     }
 }
+=======
+// This is the entrypoint for the package
+export * from './api/apis';
+export * from './model/models';
+>>>>>>> parent of 840c0ea (Release v1.13.10)

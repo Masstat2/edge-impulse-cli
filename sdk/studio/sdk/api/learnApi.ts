@@ -23,6 +23,7 @@ import { AnomalyGmmMetadata } from '../model/anomalyGmmMetadata';
 import { AnomalyModelMetadata } from '../model/anomalyModelMetadata';
 import { AnomalyResponse } from '../model/anomalyResponse';
 import { AnomalyTrainedFeaturesResponse } from '../model/anomalyTrainedFeaturesResponse';
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
 import { GenericApiResponse } from '../model/genericApiResponse';
 import { GetDataExplorerFeaturesResponse } from '../model/getDataExplorerFeaturesResponse';
 import { GetPretrainedModelResponse } from '../model/getPretrainedModelResponse';
@@ -34,6 +35,19 @@ import { SetKerasParameterRequest } from '../model/setKerasParameterRequest';
 import { StartJobResponse } from '../model/startJobResponse';
 import { TestPretrainedModelRequest } from '../model/testPretrainedModelRequest';
 import { TestPretrainedModelResponse } from '../model/testPretrainedModelResponse';
+=======
+import { ClassifyJobResponse } from '../model/classifyJobResponse';
+import { ClassifySampleResponse } from '../model/classifySampleResponse';
+import { CountSamplesResponse } from '../model/countSamplesResponse';
+import { DspRunResponseWithSample } from '../model/dspRunResponseWithSample';
+import { DspSampleFeaturesResponse } from '../model/dspSampleFeaturesResponse';
+import { DspTrainedFeaturesResponse } from '../model/dspTrainedFeaturesResponse';
+import { GetNotesResponse } from '../model/getNotesResponse';
+import { GetSampleResponse } from '../model/getSampleResponse';
+import { KerasModelMetadata } from '../model/kerasModelMetadata';
+import { ListProjectsResponse } from '../model/listProjectsResponse';
+import { ListSamplesResponse } from '../model/listSamplesResponse';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
 
 import { ObjectSerializer, Authentication, VoidAuth } from '../model/models';
 import { HttpBasicAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -49,7 +63,6 @@ let defaultBasePath = 'https://studio.edgeimpulse.com/v1';
 export enum LearnApiApiKeys {
     ApiKeyAuthentication,
     JWTAuthentication,
-    JWTHttpHeaderAuthentication,
 }
 
 type addKerasFilesFormParams = {
@@ -90,7 +103,6 @@ export class LearnApi {
         'default': <Authentication>new VoidAuth(),
         'ApiKeyAuthentication': new ApiKeyAuth('header', 'x-api-key'),
         'JWTAuthentication': new ApiKeyAuth('cookie', 'jwt'),
-        'JWTHttpHeaderAuthentication': new ApiKeyAuth('header', 'x-jwt-token'),
     }
 
     constructor(basePath?: string, opts?: LearnApiOpts);
@@ -323,8 +335,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -424,8 +434,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -470,10 +478,15 @@ export class LearnApi {
             .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
             .replace('{' + 'learnId' + '}', encodeURIComponent(String(learnId)));
         let localVarQueryParameters: any = {};
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
         const produces = ['application/zip'];
+=======
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -483,6 +496,7 @@ export class LearnApi {
         let localVarFormParams: any = {};
 
         // verify required parameter 'projectId' is not null or undefined
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
 
 
         if (projectId === null || projectId === undefined) {
@@ -498,6 +512,18 @@ export class LearnApi {
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling classifySample.');
+        }
+
+        // verify required parameter 'sampleId' is not null or undefined
+        if (sampleId === null || sampleId === undefined) {
+            throw new Error('Required parameter sampleId was null or undefined when calling classifySample.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
 
         let localVarUseFormData = false;
 
@@ -507,8 +533,12 @@ export class LearnApi {
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
             agentOptions: {keepAlive: false},
             encoding: null,
+=======
+            json: true,
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
         };
 
         let authenticationPromise = Promise.resolve();
@@ -516,8 +546,11 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -527,11 +560,16 @@ export class LearnApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
             return new Promise<Buffer>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: ClassifySampleResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
                         body = ObjectSerializer.deserialize(body, "Buffer");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -544,16 +582,131 @@ export class LearnApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "ClassifySampleResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
 
     /**
      * Download an exported Keras block - needs to be exported via \'exportKerasBlock\' first
      * @summary Download Keras export
+=======
+    /**
+     * Count all raw data by category.
+     * @summary Count samples
+     * @param projectId Project ID
+     * @param category Which of the three acquisition categories to retrieve data from
+     * @param labels Only include samples with a label within the given list of labels, given as a JSON string
+     * @param filename Only include samples whose filename includes the given filename
+     * @param maxLength Only include samples shorter than the given length, in milliseconds
+     * @param minLength Only include samples longer than the given length, in milliseconds
+     * @param signatureValidity Include samples with either valid or invalid signatures
+     */
+    public async countSamples (projectId: number, category: 'training' | 'testing' | 'anomaly', labels?: string, filename?: string, maxLength?: number, minLength?: number, signatureValidity?: 'both' | 'valid' | 'invalid', options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: CountSamplesResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/raw-data/count'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling countSamples.');
+        }
+
+        // verify required parameter 'category' is not null or undefined
+        if (category === null || category === undefined) {
+            throw new Error('Required parameter category was null or undefined when calling countSamples.');
+        }
+
+        if (category !== undefined) {
+            localVarQueryParameters['category'] = ObjectSerializer.serialize(category, "'training' | 'testing' | 'anomaly'");
+        }
+
+        if (labels !== undefined) {
+            localVarQueryParameters['labels'] = ObjectSerializer.serialize(labels, "string");
+        }
+
+        if (filename !== undefined) {
+            localVarQueryParameters['filename'] = ObjectSerializer.serialize(filename, "string");
+        }
+
+        if (maxLength !== undefined) {
+            localVarQueryParameters['maxLength'] = ObjectSerializer.serialize(maxLength, "number");
+        }
+
+        if (minLength !== undefined) {
+            localVarQueryParameters['minLength'] = ObjectSerializer.serialize(minLength, "number");
+        }
+
+        if (signatureValidity !== undefined) {
+            localVarQueryParameters['signatureValidity'] = ObjectSerializer.serialize(signatureValidity, "'both' | 'valid' | 'invalid'");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: CountSamplesResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "CountSamplesResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Download raw output from a DSP block over all data in the training set, already sliced in windows. In Numpy binary format.
+     * @summary Download DSP data
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
      * @param projectId Project ID
      * @param learnId Learn Block ID, use the impulse functions to retrieve the ID
      */
@@ -608,8 +761,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -643,6 +794,67 @@ export class LearnApi {
         });
     }
 
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
+=======
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling downloadDspLabels.');
+        }
+
+        // verify required parameter 'dspId' is not null or undefined
+        if (dspId === null || dspId === undefined) {
+            throw new Error('Required parameter dspId was null or undefined when calling downloadDspLabels.');
+        }
+
+        // verify required parameter 'category' is not null or undefined
+        if (category === null || category === undefined) {
+            throw new Error('Required parameter category was null or undefined when calling downloadDspLabels.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            encoding: null,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Buffer;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Buffer");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
     /**
      * Download a trained model for a learning block. Depending on the block this can be a TensorFlow model, or the cluster centroids.
      * @summary Download trained model
@@ -708,8 +920,6 @@ export class LearnApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
@@ -893,8 +1103,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -927,7 +1135,114 @@ export class LearnApi {
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
 
+=======
+    /**
+     * Get a sample of trained features, this extracts a number of samples and their labels. Used to visualize the current training set.
+     * @summary Sample of trained features
+     * @param projectId Project ID
+     * @param dspId DSP Block ID, use the impulse functions to retrieve the ID
+     * @param featureAx1 Feature axis 1
+     * @param featureAx2 Feature axis 2
+     * @param featureAx3 Feature axis 3
+     */
+    public async dspSampleTrainedFeatures (projectId: number, dspId: number, featureAx1: number, featureAx2: number, featureAx3: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: DspTrainedFeaturesResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/dsp/{dspId}/features/get-graph'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
+            .replace('{' + 'dspId' + '}', encodeURIComponent(String(dspId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling dspSampleTrainedFeatures.');
+        }
+
+        // verify required parameter 'dspId' is not null or undefined
+        if (dspId === null || dspId === undefined) {
+            throw new Error('Required parameter dspId was null or undefined when calling dspSampleTrainedFeatures.');
+        }
+
+        // verify required parameter 'featureAx1' is not null or undefined
+        if (featureAx1 === null || featureAx1 === undefined) {
+            throw new Error('Required parameter featureAx1 was null or undefined when calling dspSampleTrainedFeatures.');
+        }
+
+        // verify required parameter 'featureAx2' is not null or undefined
+        if (featureAx2 === null || featureAx2 === undefined) {
+            throw new Error('Required parameter featureAx2 was null or undefined when calling dspSampleTrainedFeatures.');
+        }
+
+        // verify required parameter 'featureAx3' is not null or undefined
+        if (featureAx3 === null || featureAx3 === undefined) {
+            throw new Error('Required parameter featureAx3 was null or undefined when calling dspSampleTrainedFeatures.');
+        }
+
+        if (featureAx1 !== undefined) {
+            localVarQueryParameters['featureAx1'] = ObjectSerializer.serialize(featureAx1, "number");
+        }
+
+        if (featureAx2 !== undefined) {
+            localVarQueryParameters['featureAx2'] = ObjectSerializer.serialize(featureAx2, "number");
+        }
+
+        if (featureAx3 !== undefined) {
+            localVarQueryParameters['featureAx3'] = ObjectSerializer.serialize(featureAx3, "number");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: DspTrainedFeaturesResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "DspTrainedFeaturesResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
     /**
      * Get metadata about a trained anomaly block. Use the impulse blocks to find the learnId.
      * @summary Anomaly metadata
@@ -985,8 +1300,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -1026,6 +1339,7 @@ export class LearnApi {
      * @param projectId Project ID
      * @param learnId Learn Block ID, use the impulse functions to retrieve the ID
      */
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
     public async getGmmMetadata (projectId: number, learnId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<AnomalyGmmMetadata> {
         const localVarPath = this.basePath + '/api/{projectId}/training/anomaly/{learnId}/gmm/metadata'
             .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
@@ -1034,6 +1348,13 @@ export class LearnApi {
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
+=======
+    public async getClassifyJobResult (projectId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ClassifyJobResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/classify/all/result'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1044,6 +1365,7 @@ export class LearnApi {
         let localVarFormParams: any = {};
 
         // verify required parameter 'projectId' is not null or undefined
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
 
 
         if (projectId === null || projectId === undefined) {
@@ -1059,6 +1381,13 @@ export class LearnApi {
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getClassifyJobResult.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
 
         let localVarUseFormData = false;
 
@@ -1068,7 +1397,10 @@ export class LearnApi {
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
             agentOptions: {keepAlive: false},
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
             json: true,
         };
 
@@ -1077,8 +1409,11 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -1088,11 +1423,16 @@ export class LearnApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
             return new Promise<AnomalyGmmMetadata>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: ClassifyJobResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
                         body = ObjectSerializer.deserialize(body, "AnomalyGmmMetadata");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -1105,16 +1445,29 @@ export class LearnApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "ClassifyJobResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
 
     /**
      * Get information about a Keras block, such as its dependencies. Use the impulse blocks to find the learnId.
      * @summary Keras information
+=======
+    /**
+     * Get raw sample data, but with only the axes selected by the DSP block. E.g. if you have selected only accX and accY as inputs for the DSP block, but the raw sample also contains accZ, accZ is filtered out. If you pass dspId = 0 this will return a raw graph without any processing.
+     * @summary Get raw sample
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
      * @param projectId Project ID
      * @param learnId Learn Block ID, use the impulse functions to retrieve the ID
      */
@@ -1168,8 +1521,6 @@ export class LearnApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
@@ -1261,8 +1612,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -1353,8 +1702,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -1394,14 +1741,338 @@ export class LearnApi {
      * @param projectId Project ID
      * @param learnId Learn Block ID, use the impulse functions to retrieve the ID
      */
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
     public async getLearnXData (projectId: number, learnId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<Buffer> {
         const localVarPath = this.basePath + '/api/{projectId}/training/{learnId}/x'
+=======
+    public async getNotes (projectId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetNotesResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/notes'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getNotes.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GetNotesResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GetNotesResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Get a sample.
+     * @summary Get sample
+     * @param projectId Project ID
+     * @param sampleId Sample ID
+     * @param limitPayloadValues Limit the number of payload values in the response
+     */
+    public async getSample (projectId: number, sampleId: number, limitPayloadValues?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetSampleResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/raw-data/{sampleId}'
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
             .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
             .replace('{' + 'learnId' + '}', encodeURIComponent(String(learnId)));
         let localVarQueryParameters: any = {};
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
+=======
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getSample.');
+        }
+
+        // verify required parameter 'sampleId' is not null or undefined
+        if (sampleId === null || sampleId === undefined) {
+            throw new Error('Required parameter sampleId was null or undefined when calling getSample.');
+        }
+
+        if (limitPayloadValues !== undefined) {
+            localVarQueryParameters['limitPayloadValues'] = ObjectSerializer.serialize(limitPayloadValues, "number");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: GetSampleResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "GetSampleResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Get a sample as a WAV file. This only applies to samples with an audio axis.
+     * @summary Get WAV file
+     * @param projectId Project ID
+     * @param sampleId Sample ID
+     * @param axisIx Axis index
+     * @param sliceStart Begin index of the slice
+     * @param sliceEnd End index of the slice
+     */
+    public async getSampleAsAudio (projectId: number, sampleId: number, axisIx: number, sliceStart?: number, sliceEnd?: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Buffer;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/raw-data/{sampleId}/wav'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
+            .replace('{' + 'sampleId' + '}', encodeURIComponent(String(sampleId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['audio/wav'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getSampleAsAudio.');
+        }
+
+        // verify required parameter 'sampleId' is not null or undefined
+        if (sampleId === null || sampleId === undefined) {
+            throw new Error('Required parameter sampleId was null or undefined when calling getSampleAsAudio.');
+        }
+
+        // verify required parameter 'axisIx' is not null or undefined
+        if (axisIx === null || axisIx === undefined) {
+            throw new Error('Required parameter axisIx was null or undefined when calling getSampleAsAudio.');
+        }
+
+        if (axisIx !== undefined) {
+            localVarQueryParameters['axisIx'] = ObjectSerializer.serialize(axisIx, "number");
+        }
+
+        if (sliceStart !== undefined) {
+            localVarQueryParameters['sliceStart'] = ObjectSerializer.serialize(sliceStart, "number");
+        }
+
+        if (sliceEnd !== undefined) {
+            localVarQueryParameters['sliceEnd'] = ObjectSerializer.serialize(sliceEnd, "number");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            encoding: null,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Buffer;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Buffer");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Get a sample as an image file. This only applies to samples with RGBA data.
+     * @summary Get image file
+     * @param projectId Project ID
+     * @param sampleId Sample ID
+     */
+    public async getSampleAsImage (projectId: number, sampleId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Buffer;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/raw-data/{sampleId}/image'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
+            .replace('{' + 'sampleId' + '}', encodeURIComponent(String(sampleId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['image/jpeg'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getSampleAsImage.');
+        }
+
+        // verify required parameter 'sampleId' is not null or undefined
+        if (sampleId === null || sampleId === undefined) {
+            throw new Error('Required parameter sampleId was null or undefined when calling getSampleAsImage.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            encoding: null,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: Buffer;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "Buffer");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Download a sample in it\'s original format as uploaded to the ingestion service.
+     * @summary Download file
+     * @param projectId Project ID
+     * @param sampleId Sample ID
+     */
+    public async getSampleAsRaw (projectId: number, sampleId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: Buffer;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/raw-data/{sampleId}/raw'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)))
+            .replace('{' + 'sampleId' + '}', encodeURIComponent(String(sampleId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
         const produces = ['application/octet-stream'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -1444,8 +2115,6 @@ export class LearnApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
@@ -1537,8 +2206,6 @@ export class LearnApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
-
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -1573,8 +2240,73 @@ export class LearnApi {
     }
 
     /**
+<<<<<<< HEAD:sdk/studio/sdk/api/learnApi.ts
      * Receive info back about the earlier uploaded pretrained model (via `uploadPretrainedModel`) input/output tensors. If you want to deploy a pretrained model from the API, see `startDeployPretrainedModelJob`.
      * @summary Get pretrained model
+=======
+     * Retrieve list of active projects. If authenticating using JWT token this lists all the projects the user has access to, if authenticating using an API key, this only lists that project.
+     * @summary List active projects
+     */
+    public async listProjects (options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: ListProjectsResponse;  }> {
+        const localVarPath = this.basePath + '/api/projects';
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/json'];
+        // give precedence to 'application/json'
+        if (produces.indexOf('application/json') >= 0) {
+            localVarHeaderParams.Accept = 'application/json';
+        } else {
+            localVarHeaderParams.Accept = produces.join(',');
+        }
+        let localVarFormParams: any = {};
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+
+        let localVarUseFormData = false;
+
+        let localVarRequestOptions: localVarRequest.Options = {
+            method: 'GET',
+            qs: localVarQueryParameters,
+            headers: localVarHeaderParams,
+            uri: localVarPath,
+            useQuerystring: this._useQuerystring,
+            json: true,
+        };
+
+        let authenticationPromise = Promise.resolve();
+        authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
+
+        authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
+        return authenticationPromise.then(() => {
+            if (Object.keys(localVarFormParams).length) {
+                if (localVarUseFormData) {
+                    (<any>localVarRequestOptions).formData = localVarFormParams;
+                } else {
+                    localVarRequestOptions.form = localVarFormParams;
+                }
+            }
+            return new Promise<{ response: http.IncomingMessage; body: ListProjectsResponse;  }>((resolve, reject) => {
+                localVarRequest(localVarRequestOptions, (error, response, body) => {
+                    if (error) {
+                        reject(error);
+                    } else {
+                        body = ObjectSerializer.deserialize(body, "ListProjectsResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+                        }
+                    }
+                });
+            });
+        });
+    }
+    /**
+     * Retrieve all raw data by category.
+     * @summary List samples
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/allowsReadOnlyApi.ts
      * @param projectId Project ID
      */
     public async getPretrainedModelInfo (projectId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<GetPretrainedModelResponse> {
@@ -1619,8 +2351,6 @@ export class LearnApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
@@ -1702,8 +2432,6 @@ export class LearnApi {
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
-
-        authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {

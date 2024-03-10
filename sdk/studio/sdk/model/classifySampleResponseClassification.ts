@@ -10,12 +10,16 @@
  * Do not edit the class manually.
  */
 
+<<<<<<< HEAD:sdk/studio/sdk/model/classifySampleResponseClassification.ts
 import { AnomalyResult } from './anomalyResult';
 import { ClassifySampleResponseClassificationDetails } from './classifySampleResponseClassificationDetails';
 import { ImpulseLearnBlock } from './impulseLearnBlock';
 import { ObjectDetectionLastLayer } from './objectDetectionLastLayer';
 import { StructuredClassifyResult } from './structuredClassifyResult';
 import { StructuredLabel } from './structuredLabel';
+=======
+import { ImpulseLearnBlock } from './impulseLearnBlock';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/classifySampleResponseClassification.ts
 
 export class ClassifySampleResponseClassification {
     'learnBlock': ImpulseLearnBlock;
@@ -24,6 +28,7 @@ export class ClassifySampleResponseClassification {
     */
     'result': Array<{ [key: string]: number; }>;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/classifySampleResponseClassification.ts
     * Anomaly scores and computed metrics for GMM anomaly detection, one item per window.
     */
     'anomalyResult'?: Array<AnomalyResult>;
@@ -44,6 +49,15 @@ export class ClassifySampleResponseClassification {
     * An array with an expected label per window.
     */
     'expectedLabels': Array<StructuredLabel>;
+=======
+    * The minimum confidence rating for this block
+    */
+    'minimumConfidenceRating': number;
+    /**
+    * The maximum error for regression models (only set when the learn block is of type \'keras-regression\', otherwise 0)
+    */
+    'maximumRegressionError': number;
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/classifySampleResponseClassification.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -59,6 +73,7 @@ export class ClassifySampleResponseClassification {
             "type": "Array<{ [key: string]: number; }>"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/classifySampleResponseClassification.ts
             "name": "anomalyResult",
             "baseName": "anomalyResult",
             "type": "Array<AnomalyResult>"
@@ -69,11 +84,14 @@ export class ClassifySampleResponseClassification {
             "type": "Array<StructuredClassifyResult>"
         },
         {
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/classifySampleResponseClassification.ts
             "name": "minimumConfidenceRating",
             "baseName": "minimumConfidenceRating",
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/classifySampleResponseClassification.ts
             "name": "details",
             "baseName": "details",
             "type": "Array<ClassifySampleResponseClassificationDetails>"
@@ -87,6 +105,11 @@ export class ClassifySampleResponseClassification {
             "name": "expectedLabels",
             "baseName": "expectedLabels",
             "type": "Array<StructuredLabel>"
+=======
+            "name": "maximumRegressionError",
+            "baseName": "maximumRegressionError",
+            "type": "number"
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/classifySampleResponseClassification.ts
         }    ];
 
     static getAttributeTypeMap() {

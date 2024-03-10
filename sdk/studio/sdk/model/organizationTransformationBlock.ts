@@ -10,8 +10,11 @@
  * Do not edit the class manually.
  */
 
+<<<<<<< HEAD:sdk/studio/sdk/model/organizationTransformationBlock.ts
 import { DSPGroupItem } from './dSPGroupItem';
 import { TransformationBlockAdditionalMountPoint } from './transformationBlockAdditionalMountPoint';
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/organizationTransformationBlock.ts
 
 export class OrganizationTransformationBlock {
     'id': number;
@@ -31,6 +34,7 @@ export class OrganizationTransformationBlock {
     'requestsMemory'?: number;
     'limitsCpu'?: number;
     'limitsMemory'?: number;
+<<<<<<< HEAD:sdk/studio/sdk/model/organizationTransformationBlock.ts
     'additionalMountPoints': Array<TransformationBlockAdditionalMountPoint>;
     'operatesOn': OrganizationTransformationBlockOperatesOnEnum;
     'allowExtraCliArguments': boolean;
@@ -46,6 +50,8 @@ export class OrganizationTransformationBlock {
     * 15m for 15 minutes, 2h for 2 hours, 1d for 1 day. If not set, the default is 8 hours.
     */
     'maxRunningTimeStr'?: string;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/organizationTransformationBlock.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -119,6 +125,7 @@ export class OrganizationTransformationBlock {
             "name": "limitsMemory",
             "baseName": "limitsMemory",
             "type": "number"
+<<<<<<< HEAD:sdk/studio/sdk/model/organizationTransformationBlock.ts
         },
         {
             "name": "additionalMountPoints",
@@ -149,6 +156,8 @@ export class OrganizationTransformationBlock {
             "name": "maxRunningTimeStr",
             "baseName": "maxRunningTimeStr",
             "type": "string"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/organizationTransformationBlock.ts
         }    ];
 
     static getAttributeTypeMap() {
@@ -156,6 +165,3 @@ export class OrganizationTransformationBlock {
     }
 }
 
-
-export type OrganizationTransformationBlockOperatesOnEnum = 'file' | 'dataitem' | 'standalone';
-export const OrganizationTransformationBlockOperatesOnEnumValues: string[] = ['file', 'dataitem', 'standalone'];

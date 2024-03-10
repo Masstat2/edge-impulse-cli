@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { TransformationBlockAdditionalMountPoint } from './transformationBlockAdditionalMountPoint';
 
 export class UpdateOrganizationTransformationBlockRequest {
     'name'?: string;
@@ -25,6 +24,7 @@ export class UpdateOrganizationTransformationBlockRequest {
     'requestsMemory'?: number;
     'limitsCpu'?: number;
     'limitsMemory'?: number;
+<<<<<<< HEAD:sdk/studio/sdk/model/updateOrganizationTransformationBlockRequest.ts
     'additionalMountPoints'?: Array<TransformationBlockAdditionalMountPoint>;
     'operatesOn'?: UpdateOrganizationTransformationBlockRequestOperatesOnEnum;
     'allowExtraCliArguments'?: boolean;
@@ -36,6 +36,8 @@ export class UpdateOrganizationTransformationBlockRequest {
     * 15m for 15 minutes, 2h for 2 hours, 1d for 1 day. If not set, the default is 8 hours.
     */
     'maxRunningTimeStr'?: string;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/updateOrganizationTransformationBlockRequest.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -84,6 +86,7 @@ export class UpdateOrganizationTransformationBlockRequest {
             "name": "limitsMemory",
             "baseName": "limitsMemory",
             "type": "number"
+<<<<<<< HEAD:sdk/studio/sdk/model/updateOrganizationTransformationBlockRequest.ts
         },
         {
             "name": "additionalMountPoints",
@@ -109,6 +112,8 @@ export class UpdateOrganizationTransformationBlockRequest {
             "name": "maxRunningTimeStr",
             "baseName": "maxRunningTimeStr",
             "type": "string"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/updateOrganizationTransformationBlockRequest.ts
         }    ];
 
     static getAttributeTypeMap() {
@@ -116,6 +121,3 @@ export class UpdateOrganizationTransformationBlockRequest {
     }
 }
 
-
-export type UpdateOrganizationTransformationBlockRequestOperatesOnEnum = 'file' | 'dataitem' | 'standalone';
-export const UpdateOrganizationTransformationBlockRequestOperatesOnEnumValues: string[] = ['file', 'dataitem', 'standalone'];

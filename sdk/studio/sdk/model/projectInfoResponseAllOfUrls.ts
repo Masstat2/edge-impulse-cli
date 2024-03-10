@@ -16,6 +16,7 @@ export class ProjectInfoResponseAllOfUrls {
     * Base URL for the mobile client. If this is undefined then no development API key is set.
     */
     'mobileClient'?: string;
+<<<<<<< HEAD:sdk/studio/sdk/model/projectInfoResponseAllOfUrls.ts
     /**
     * Base URL for collecting data with the mobile client from a computer. If this is undefined then no development API key is set.
     */
@@ -24,6 +25,8 @@ export class ProjectInfoResponseAllOfUrls {
     * Base URL for running inference with the mobile client. If this is undefined then no development API key is set.
     */
     'mobileClientInference'?: string;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/projectInfoResponseAllOfUrls.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -32,6 +35,7 @@ export class ProjectInfoResponseAllOfUrls {
             "name": "mobileClient",
             "baseName": "mobileClient",
             "type": "string"
+<<<<<<< HEAD:sdk/studio/sdk/model/projectInfoResponseAllOfUrls.ts
         },
         {
             "name": "mobileClientComputer",
@@ -42,6 +46,8 @@ export class ProjectInfoResponseAllOfUrls {
             "name": "mobileClientInference",
             "baseName": "mobileClientInference",
             "type": "string"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/projectInfoResponseAllOfUrls.ts
         }    ];
 
     static getAttributeTypeMap() {

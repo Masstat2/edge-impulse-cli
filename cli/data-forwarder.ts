@@ -414,7 +414,10 @@ async function connectToSerial(eiConfig: EdgeImpulseConfig, serialPath: string, 
                             'x-api-key': dataForwarderConfig.apiKey,
                             'x-file-name': encodeLabel(s.label + '.json'),
                             'x-label': encodeLabel(s.label),
+<<<<<<< HEAD
                             'x-upload-source': 'EDGE_IMPULSE_CLI_FORWARDER',
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10)
                             'Content-Type': 'application/json'
                         },
                         body: encoded,

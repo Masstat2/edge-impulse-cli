@@ -38,6 +38,7 @@ export class ImpulseDspBlock {
     */
     'valuesPerAxis'?: number;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseDspBlock.ts
     * The ID of the Input block a DSP block is connected to
     */
     'input'?: number;
@@ -90,6 +91,8 @@ export class ImpulseDspBlock {
     */
     'createdAt'?: Date;
     /**
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseDspBlock.ts
     * Implementation version of the block
     */
     'implementationVersion': number;
@@ -133,6 +136,7 @@ export class ImpulseDspBlock {
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseDspBlock.ts
             "name": "input",
             "baseName": "input",
             "type": "number"
@@ -198,6 +202,8 @@ export class ImpulseDspBlock {
             "type": "Date"
         },
         {
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseDspBlock.ts
             "name": "implementationVersion",
             "baseName": "implementationVersion",
             "type": "number"

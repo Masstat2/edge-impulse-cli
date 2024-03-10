@@ -48,6 +48,7 @@ export class SetKerasParameterRequest {
     */
     'learningRate'?: number;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/setKerasParameterRequest.ts
     * Batch size used during training (only in visual mode).
     */
     'batchSize'?: number;
@@ -57,6 +58,9 @@ export class SetKerasParameterRequest {
     'trainTestSplit'?: number;
     /**
     * Whether to automatically balance class weights, use this for skewed datasets.
+=======
+    * Tuner learning rates (between 0 and 1) (only in visual mode).
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/setKerasParameterRequest.ts
     */
     'autoClassWeights'?: boolean;
     /**
@@ -128,6 +132,7 @@ export class SetKerasParameterRequest {
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/setKerasParameterRequest.ts
             "name": "batchSize",
             "baseName": "batchSize",
             "type": "number"
@@ -141,6 +146,11 @@ export class SetKerasParameterRequest {
             "name": "autoClassWeights",
             "baseName": "autoClassWeights",
             "type": "boolean"
+=======
+            "name": "learningRates",
+            "baseName": "learningRates",
+            "type": "Array<number>"
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/setKerasParameterRequest.ts
         },
         {
             "name": "findLearningRate",

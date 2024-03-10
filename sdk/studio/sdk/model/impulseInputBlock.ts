@@ -37,6 +37,7 @@ export class ImpulseInputBlock {
     */
     'windowIncreaseMs'?: number;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseInputBlock.ts
     * (Input only) Frequency of the input data in Hz
     */
     'frequencyHz'?: number;
@@ -49,6 +50,8 @@ export class ImpulseInputBlock {
     */
     'padZeros'?: boolean;
     /**
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseInputBlock.ts
     * Width all images are resized to before training
     */
     'imageWidth'?: number;
@@ -68,6 +71,7 @@ export class ImpulseInputBlock {
     * If images are resized using a crop, choose where to anchor the crop
     */
     'cropAnchor'?: ImpulseInputBlockCropAnchorEnum;
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseInputBlock.ts
     /**
     * Whether this block is the primary version of its base block.
     */
@@ -116,6 +120,8 @@ export class ImpulseInputBlock {
     * The datetime that the block version was created. Cannot be set via API.
     */
     'createdAt'?: Date;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseInputBlock.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -151,6 +157,7 @@ export class ImpulseInputBlock {
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseInputBlock.ts
             "name": "frequencyHz",
             "baseName": "frequencyHz",
             "type": "number"
@@ -166,6 +173,8 @@ export class ImpulseInputBlock {
             "type": "boolean"
         },
         {
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseInputBlock.ts
             "name": "imageWidth",
             "baseName": "imageWidth",
             "type": "number"
@@ -189,6 +198,7 @@ export class ImpulseInputBlock {
             "name": "cropAnchor",
             "baseName": "cropAnchor",
             "type": "ImpulseInputBlockCropAnchorEnum"
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseInputBlock.ts
         },
         {
             "name": "primaryVersion",
@@ -249,6 +259,8 @@ export class ImpulseInputBlock {
             "name": "createdAt",
             "baseName": "createdAt",
             "type": "Date"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseInputBlock.ts
         }    ];
 
     static getAttributeTypeMap() {

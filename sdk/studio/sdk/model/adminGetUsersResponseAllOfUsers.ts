@@ -18,10 +18,19 @@ export class AdminGetUsersResponseAllOfUsers {
     'name': string;
     'photo'?: string;
     'created': Date;
+<<<<<<< HEAD:sdk/studio/sdk/model/adminGetUsersResponseAllOfUsers.ts
     'lastSeen'?: Date;
     'activated'?: boolean;
     'fromEvaluation'?: boolean;
     'tier'?: AdminGetUsersResponseAllOfUsersTierEnum;
+=======
+    'added': Date;
+    'email': string;
+    'role': OrganizationUserRoleEnum;
+    'isEdgeImpulseStaff': boolean;
+    'projectCount': number;
+    'datasets': Array<string>;
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/organizationUser.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -67,6 +76,7 @@ export class AdminGetUsersResponseAllOfUsers {
             "type": "boolean"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/adminGetUsersResponseAllOfUsers.ts
             "name": "fromEvaluation",
             "baseName": "from_evaluation",
             "type": "boolean"
@@ -75,6 +85,16 @@ export class AdminGetUsersResponseAllOfUsers {
             "name": "tier",
             "baseName": "tier",
             "type": "AdminGetUsersResponseAllOfUsersTierEnum"
+=======
+            "name": "projectCount",
+            "baseName": "projectCount",
+            "type": "number"
+        },
+        {
+            "name": "datasets",
+            "baseName": "datasets",
+            "type": "Array<string>"
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/organizationUser.ts
         }    ];
 
     static getAttributeTypeMap() {

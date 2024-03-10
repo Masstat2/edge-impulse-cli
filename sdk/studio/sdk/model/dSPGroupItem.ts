@@ -21,10 +21,13 @@ export class DSPGroupItem {
     'help'?: string;
     'param': string;
     'selectOptions'?: Array<DSPGroupItemSelectOptions>;
+<<<<<<< HEAD:sdk/studio/sdk/model/dSPGroupItem.ts
     'readonly': boolean;
     'shouldShow': boolean;
     'showIf'?: DSPGroupItemShowIf;
     'invalidText'?: string;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/dSPGroupItem.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -63,6 +66,7 @@ export class DSPGroupItem {
             "name": "selectOptions",
             "baseName": "selectOptions",
             "type": "Array<DSPGroupItemSelectOptions>"
+<<<<<<< HEAD:sdk/studio/sdk/model/dSPGroupItem.ts
         },
         {
             "name": "readonly",
@@ -83,6 +87,8 @@ export class DSPGroupItem {
             "name": "invalidText",
             "baseName": "invalidText",
             "type": "string"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/dSPGroupItem.ts
         }    ];
 
     static getAttributeTypeMap() {

@@ -22,7 +22,10 @@ import { getCliVersion, initCliApp, setupCliApp } from './init-cli-app';
 import { Mutex } from 'async-mutex';
 import WebSocket from 'ws';
 import encodeLabel from '../shared/encoding';
+<<<<<<< HEAD
 import { upload } from './make-image';
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10)
 
 const TCP_PREFIX = '\x1b[32m[WS ]\x1b[0m';
 const SERIAL_PREFIX = '\x1b[33m[SER]\x1b[0m';
@@ -354,6 +357,21 @@ class SerialDevice extends (EventEmitter as new () => TypedEmitter<{
                 height: height,
             }, 100);
 
+<<<<<<< HEAD
+=======
+            let filename = s.label + '.jpg';
+            let processed = makeImage(jpegImageData.data, this._deviceConfig.sampling.hmacKey, filename);
+
+            let headers: { [k: string]: string} = {
+                'x-api-key': this._deviceConfig.upload.apiKey,
+                'x-file-name': encodeLabel(filename),
+                'Content-Type': (!processed.attachments ? processed.contentType : 'multipart/form-data'),
+                'Connection': 'keep-alive'
+            };
+
+            headers['x-label'] = encodeLabel(s.label);
+
+>>>>>>> parent of 840c0ea (Release v1.13.10)
             let url = this._config.endpoints.internal.ingestion + s.path;
             console.log(SERIAL_PREFIX, 'Uploading to', url);
 

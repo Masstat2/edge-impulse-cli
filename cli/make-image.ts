@@ -4,10 +4,15 @@ import fetch from 'node-fetch';
 import { EdgeImpulseConfig } from './config';
 import http from 'http';
 import https from 'https';
+<<<<<<< HEAD
 import encodeLabel from '../shared/encoding';
 import Path from 'path';
 import { ExportInputBoundingBox, ExportStructuredLabelsFileV1,
     ExportUploaderInfoFileCategory, ExportUploaderInfoFileLabel } from '../shared/bounding-box-file-types';
+=======
+import { WaveFile } from 'wavefile';
+import encodeLabel from '../shared/encoding';
+>>>>>>> parent of 840c0ea (Release v1.13.10)
 
 const keepAliveAgentHttp = new http.Agent({ keepAlive: true });
 const keepAliveAgentHttps = new https.Agent({ keepAlive: true });
@@ -47,12 +52,22 @@ export async function upload(opts: {
 
     let headers: { [k: string]: string} = {
         'x-api-key': opts.apiKey,
+<<<<<<< HEAD
         'x-upload-source': 'EDGE_IMPULSE_CLI_UPLOADER',
         'Connection': 'keep-alive'
     };
 
     if (opts.label.type === 'label') {
         headers['x-label'] = encodeLabel(opts.label.label);
+=======
+        'x-file-name': encodeLabel(opts.filename),
+        'Content-Type': (!opts.processed.attachments ? opts.processed.contentType : 'multipart/form-data'),
+        'Connection': 'keep-alive'
+    };
+
+    if (opts.label) {
+        headers['x-label'] = encodeLabel(opts.label);
+>>>>>>> parent of 840c0ea (Release v1.13.10)
     }
     else if (opts.label.type === 'unlabeled') {
         headers['x-label'] = encodeLabel('');

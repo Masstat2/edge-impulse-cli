@@ -10,7 +10,6 @@
  * Do not edit the class manually.
  */
 
-import { TransformationBlockAdditionalMountPoint } from './transformationBlockAdditionalMountPoint';
 
 export class AddOrganizationTransformationBlockRequest {
     'name': string;
@@ -25,6 +24,7 @@ export class AddOrganizationTransformationBlockRequest {
     'requestsMemory'?: number;
     'limitsCpu'?: number;
     'limitsMemory'?: number;
+<<<<<<< HEAD:sdk/studio/sdk/model/addOrganizationTransformationBlockRequest.ts
     'additionalMountPoints': Array<TransformationBlockAdditionalMountPoint>;
     'operatesOn': AddOrganizationTransformationBlockRequestOperatesOnEnum;
     'allowExtraCliArguments'?: boolean;
@@ -36,6 +36,8 @@ export class AddOrganizationTransformationBlockRequest {
     * 15m for 15 minutes, 2h for 2 hours, 1d for 1 day. If not set, the default is 8 hours.
     */
     'maxRunningTimeStr'?: string;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/addOrganizationTransformationBlockRequest.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -84,6 +86,7 @@ export class AddOrganizationTransformationBlockRequest {
             "name": "limitsMemory",
             "baseName": "limitsMemory",
             "type": "number"
+<<<<<<< HEAD:sdk/studio/sdk/model/addOrganizationTransformationBlockRequest.ts
         },
         {
             "name": "additionalMountPoints",
@@ -109,6 +112,8 @@ export class AddOrganizationTransformationBlockRequest {
             "name": "maxRunningTimeStr",
             "baseName": "maxRunningTimeStr",
             "type": "string"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/addOrganizationTransformationBlockRequest.ts
         }    ];
 
     static getAttributeTypeMap() {
@@ -116,6 +121,3 @@ export class AddOrganizationTransformationBlockRequest {
     }
 }
 
-
-export type AddOrganizationTransformationBlockRequestOperatesOnEnum = 'file' | 'dataitem' | 'standalone';
-export const AddOrganizationTransformationBlockRequestOperatesOnEnumValues: string[] = ['file', 'dataitem', 'standalone'];

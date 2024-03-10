@@ -19,6 +19,7 @@ import localVarRequest = require('request');
 import http = require('http');
 
 /* tslint:disable:no-unused-locals */
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
 import { CreateWhitelabelRequest } from '../model/createWhitelabelRequest';
 import { CreateWhitelabelResponse } from '../model/createWhitelabelResponse';
 import { GenericApiResponse } from '../model/genericApiResponse';
@@ -27,6 +28,11 @@ import { GetImpulseBlocksResponse } from '../model/getImpulseBlocksResponse';
 import { GetWhitelabelDomainResponse } from '../model/getWhitelabelDomainResponse';
 import { GetWhitelabelResponse } from '../model/getWhitelabelResponse';
 import { UpdateWhitelabelDeploymentTargetsRequest } from '../model/updateWhitelabelDeploymentTargetsRequest';
+=======
+import { EvaluateJobResponse } from '../model/evaluateJobResponse';
+import { GetDeploymentResponse } from '../model/getDeploymentResponse';
+import { KerasModelTypeEnum } from '../model/kerasModelTypeEnum';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
 
 import { ObjectSerializer, Authentication, VoidAuth } from '../model/models';
 import { HttpBasicAuth, ApiKeyAuth, OAuth } from '../model/models';
@@ -42,7 +48,6 @@ let defaultBasePath = 'https://studio.edgeimpulse.com/v1';
 export enum WhitelabelsApiApiKeys {
     ApiKeyAuthentication,
     JWTAuthentication,
-    JWTHttpHeaderAuthentication,
 }
 
 
@@ -62,7 +67,6 @@ export class WhitelabelsApi {
         'default': <Authentication>new VoidAuth(),
         'ApiKeyAuthentication': new ApiKeyAuth('header', 'x-api-key'),
         'JWTAuthentication': new ApiKeyAuth('cookie', 'jwt'),
-        'JWTHttpHeaderAuthentication': new ApiKeyAuth('header', 'x-jwt-token'),
     }
 
     constructor(basePath?: string, opts?: WhitelabelsApiOpts);
@@ -117,10 +121,15 @@ export class WhitelabelsApi {
     public async createWhitelabel (createWhitelabelRequest: CreateWhitelabelRequest, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<CreateWhitelabelResponse> {
         const localVarPath = this.basePath + '/api/whitelabels';
         let localVarQueryParameters: any = {};
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
         const produces = ['application/json'];
+=======
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+        const produces = ['application/zip'];
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
             localVarHeaderParams.Accept = 'application/json';
@@ -129,6 +138,7 @@ export class WhitelabelsApi {
         }
         let localVarFormParams: any = {};
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         // verify required parameter 'createWhitelabelRequest' is not null or undefined
 
 
@@ -305,6 +315,27 @@ export class WhitelabelsApi {
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling downloadBuild.');
+        }
+
+        // verify required parameter 'type' is not null or undefined
+        if (type === null || type === undefined) {
+            throw new Error('Required parameter type was null or undefined when calling downloadBuild.');
+        }
+
+        if (type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(type, "string");
+        }
+
+        if (modelType !== undefined) {
+            localVarQueryParameters['modelType'] = ObjectSerializer.serialize(modelType, "KerasModelTypeEnum");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
 
         let localVarUseFormData = false;
 
@@ -314,8 +345,12 @@ export class WhitelabelsApi {
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             agentOptions: {keepAlive: false},
             json: true,
+=======
+            encoding: null,
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         };
 
         let authenticationPromise = Promise.resolve();
@@ -323,8 +358,11 @@ export class WhitelabelsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -334,11 +372,16 @@ export class WhitelabelsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             return new Promise<GetImpulseBlocksResponse>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: Buffer;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
                         body = ObjectSerializer.deserialize(body, "GetImpulseBlocksResponse");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -351,12 +394,20 @@ export class WhitelabelsApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "Buffer");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
 
     /**
      * Retrieve the list of registered white labels.
@@ -368,6 +419,20 @@ export class WhitelabelsApi {
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
+=======
+    /**
+     * Gives information on whether a deployment was already built for a type
+     * @summary Get deployment info
+     * @param projectId Project ID
+     * @param type Output format
+     * @param modelType Optional model type of the build (if not, it uses the settings in the Keras block)
+     */
+    public async getDeployment (projectId: number, type: string, modelType?: KerasModelTypeEnum, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: GetDeploymentResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/deployment'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -377,8 +442,30 @@ export class WhitelabelsApi {
         }
         let localVarFormParams: any = {};
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getDeployment.');
+        }
+
+        // verify required parameter 'type' is not null or undefined
+        if (type === null || type === undefined) {
+            throw new Error('Required parameter type was null or undefined when calling getDeployment.');
+        }
+
+        if (type !== undefined) {
+            localVarQueryParameters['type'] = ObjectSerializer.serialize(type, "string");
+        }
+
+        if (modelType !== undefined) {
+            localVarQueryParameters['modelType'] = ObjectSerializer.serialize(modelType, "KerasModelTypeEnum");
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
 
         let localVarUseFormData = false;
 
@@ -388,7 +475,10 @@ export class WhitelabelsApi {
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             agentOptions: {keepAlive: false},
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
             json: true,
         };
 
@@ -397,8 +487,11 @@ export class WhitelabelsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -408,11 +501,16 @@ export class WhitelabelsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             return new Promise<GetAllWhitelabelsResponse>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: GetDeploymentResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
                         body = ObjectSerializer.deserialize(body, "GetAllWhitelabelsResponse");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -425,12 +523,20 @@ export class WhitelabelsApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "GetDeploymentResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
 
     /**
      * Retrieve all the information about this white label.
@@ -444,6 +550,18 @@ export class WhitelabelsApi {
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
+=======
+    /**
+     * Get evaluate job result, containing detailed performance statistics for every possible variant of the impulse.
+     * @summary Evaluate job result
+     * @param projectId Project ID
+     */
+    public async getEvaluateJobResult (projectId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EvaluateJobResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/deployment/evaluate'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -453,6 +571,7 @@ export class WhitelabelsApi {
         }
         let localVarFormParams: any = {};
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         // verify required parameter 'whitelabelIdentifier' is not null or undefined
 
 
@@ -462,6 +581,14 @@ export class WhitelabelsApi {
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getEvaluateJobResult.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
 
         let localVarUseFormData = false;
 
@@ -471,7 +598,10 @@ export class WhitelabelsApi {
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             agentOptions: {keepAlive: false},
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
             json: true,
         };
 
@@ -480,8 +610,11 @@ export class WhitelabelsApi {
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -491,11 +624,16 @@ export class WhitelabelsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             return new Promise<GetWhitelabelResponse>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: EvaluateJobResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
                         body = ObjectSerializer.deserialize(body, "GetWhitelabelResponse");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -508,12 +646,20 @@ export class WhitelabelsApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "EvaluateJobResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                         }
                     }
                 });
             });
         });
     }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
 
     /**
      * Get a white label domain given its unique identifier.
@@ -527,6 +673,18 @@ export class WhitelabelsApi {
         let localVarHeaderParams: any = (<any>Object).assign({
             'User-Agent': 'edgeimpulse-api nodejs'
         }, this.defaultHeaders);
+=======
+    /**
+     * Get evaluate job result, containing detailed performance statistics for every possible variant of the impulse. This only checks cache, and throws an error if there is no data in cache.
+     * @summary Check evaluate job result (cache)
+     * @param projectId Project ID
+     */
+    public async getEvaluateJobResultCache (projectId: number, options: {headers: {[name: string]: string}} = {headers: {}}) : Promise<{ response: http.IncomingMessage; body: EvaluateJobResponse;  }> {
+        const localVarPath = this.basePath + '/api/{projectId}/deployment/evaluate/cache'
+            .replace('{' + 'projectId' + '}', encodeURIComponent(String(projectId)));
+        let localVarQueryParameters: any = {};
+        let localVarHeaderParams: any = (<any>Object).assign({}, this.defaultHeaders);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         const produces = ['application/json'];
         // give precedence to 'application/json'
         if (produces.indexOf('application/json') >= 0) {
@@ -536,6 +694,7 @@ export class WhitelabelsApi {
         }
         let localVarFormParams: any = {};
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         // verify required parameter 'whitelabelIdentifier' is not null or undefined
 
 
@@ -545,6 +704,14 @@ export class WhitelabelsApi {
 
         (<any>Object).assign(localVarHeaderParams, options.headers);
         (<any>Object).assign(localVarHeaderParams, this.opts.extraHeaders);
+=======
+        // verify required parameter 'projectId' is not null or undefined
+        if (projectId === null || projectId === undefined) {
+            throw new Error('Required parameter projectId was null or undefined when calling getEvaluateJobResultCache.');
+        }
+
+        (<any>Object).assign(localVarHeaderParams, options.headers);
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
 
         let localVarUseFormData = false;
 
@@ -554,11 +721,15 @@ export class WhitelabelsApi {
             headers: localVarHeaderParams,
             uri: localVarPath,
             useQuerystring: this._useQuerystring,
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             agentOptions: {keepAlive: false},
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
             json: true,
         };
 
         let authenticationPromise = Promise.resolve();
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -645,12 +816,17 @@ export class WhitelabelsApi {
         };
 
         let authenticationPromise = Promise.resolve();
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.ApiKeyAuthentication.applyToRequest(localVarRequestOptions));
 
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTAuthentication.applyToRequest(localVarRequestOptions));
 
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.JWTHttpHeaderAuthentication.applyToRequest(localVarRequestOptions));
 
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
         authenticationPromise = authenticationPromise.then(() => this.authentications.default.applyToRequest(localVarRequestOptions));
         return authenticationPromise.then(() => {
             if (Object.keys(localVarFormParams).length) {
@@ -660,11 +836,16 @@ export class WhitelabelsApi {
                     localVarRequestOptions.form = localVarFormParams;
                 }
             }
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
             return new Promise<GenericApiResponse>((resolve, reject) => {
+=======
+            return new Promise<{ response: http.IncomingMessage; body: EvaluateJobResponse;  }>((resolve, reject) => {
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                 localVarRequest(localVarRequestOptions, (error, response, body) => {
                     if (error) {
                         reject(error);
                     } else {
+<<<<<<< HEAD:sdk/studio/sdk/api/whitelabelsApi.ts
                         body = ObjectSerializer.deserialize(body, "GenericApiResponse");
 
                         const errString = `Failed to call "${localVarPath}", returned ${response.statusCode}: ` + response.body;
@@ -677,6 +858,13 @@ export class WhitelabelsApi {
                         }
                         else {
                             reject(errString);
+=======
+                        body = ObjectSerializer.deserialize(body, "EvaluateJobResponse");
+                        if (response.statusCode && response.statusCode >= 200 && response.statusCode <= 299) {
+                            resolve({ response: response, body: body });
+                        } else {
+                            reject(new HttpError(response, body, response.statusCode));
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/deploymentApi.ts
                         }
                     }
                 });

@@ -15,6 +15,7 @@ import { TunerSpaceImpulse } from './tunerSpaceImpulse';
 
 export class OptimizeConfig {
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/optimizeConfig.ts
     * Dataset category
     */
     'datasetCategory'?: OptimizeConfigDatasetCategoryEnum;
@@ -23,6 +24,8 @@ export class OptimizeConfig {
     */
     'classificationType'?: OptimizeConfigClassificationTypeEnum;
     /**
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/optimizeConfig.ts
     * Target latency in MS
     */
     'targetLatency'?: number;
@@ -43,6 +46,7 @@ export class OptimizeConfig {
     'tuningWorkers'?: number;
     'minMACCS'?: number;
     'maxMACCS'?: number;
+<<<<<<< HEAD:sdk/studio/sdk/model/optimizeConfig.ts
     /**
     * Tuning algorithm to use to search hyperparameter space
     */
@@ -53,11 +57,14 @@ export class OptimizeConfig {
     * List of impulses specifying the EON Tuner search space
     */
     'space'?: Array<TunerSpaceImpulse>;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/optimizeConfig.ts
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/optimizeConfig.ts
             "name": "datasetCategory",
             "baseName": "datasetCategory",
             "type": "OptimizeConfigDatasetCategoryEnum"
@@ -68,6 +75,8 @@ export class OptimizeConfig {
             "type": "OptimizeConfigClassificationTypeEnum"
         },
         {
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/optimizeConfig.ts
             "name": "targetLatency",
             "baseName": "targetLatency",
             "type": "number"
@@ -111,6 +120,7 @@ export class OptimizeConfig {
             "name": "maxMACCS",
             "baseName": "maxMACCS",
             "type": "number"
+<<<<<<< HEAD:sdk/studio/sdk/model/optimizeConfig.ts
         },
         {
             "name": "tuningAlgorithm",
@@ -131,6 +141,8 @@ export class OptimizeConfig {
             "name": "space",
             "baseName": "space",
             "type": "Array<TunerSpaceImpulse>"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/optimizeConfig.ts
         }    ];
 
     static getAttributeTypeMap() {
@@ -138,6 +150,7 @@ export class OptimizeConfig {
     }
 }
 
+<<<<<<< HEAD:sdk/studio/sdk/model/optimizeConfig.ts
 
 export type OptimizeConfigDatasetCategoryEnum = 'speech_keyword' | 'speech_continuous' | 'audio_event' | 'audio_continuous' | 'transfer_learning' | 'motion_event' | 'motion_continuous' | 'audio_syntiant' | 'object_detection';
 export const OptimizeConfigDatasetCategoryEnumValues: string[] = ['speech_keyword', 'speech_continuous', 'audio_event', 'audio_continuous', 'transfer_learning', 'motion_event', 'motion_continuous', 'audio_syntiant', 'object_detection'];
@@ -147,3 +160,5 @@ export const OptimizeConfigClassificationTypeEnumValues: string[] = ['classifica
 
 export type OptimizeConfigTuningAlgorithmEnum = 'random' | 'hyperband' | 'bayesian' | 'custom';
 export const OptimizeConfigTuningAlgorithmEnumValues: string[] = ['random', 'hyperband', 'bayesian', 'custom'];
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/optimizeConfig.ts

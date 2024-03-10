@@ -25,16 +25,13 @@ export class ImpulseBlockVersion {
     */
     'name'?: string;
     /**
-    * A short description of the block version, displayed in the block versioning UI
-    */
-    'description'?: string;
-    /**
-    * (Learn only) DSP dependencies, identified by DSP block ID
+    * DSP dependencies, identified by DSP block ID
     */
     'dsp'?: Array<number>;
     /**
-    * (DSP only) Input axes, identified by the name in the name of the axis
+    * A short description of the block version, displayed in the block versioning UI
     */
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseBlockVersion.ts
     'axes'?: Array<string>;
     /**
     * (DSP only) The ID of the Input block a DSP block is connected to
@@ -80,6 +77,9 @@ export class ImpulseBlockVersion {
     * (Input only) If images are resized using a crop, choose where to anchor the crop
     */
     'cropAnchor'?: ImpulseBlockVersionCropAnchorEnum;
+=======
+    'description'?: string;
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseBlockVersion.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -100,16 +100,12 @@ export class ImpulseBlockVersion {
             "type": "string"
         },
         {
-            "name": "description",
-            "baseName": "description",
-            "type": "string"
-        },
-        {
             "name": "dsp",
             "baseName": "dsp",
             "type": "Array<number>"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseBlockVersion.ts
             "name": "axes",
             "baseName": "axes",
             "type": "Array<string>"
@@ -168,6 +164,11 @@ export class ImpulseBlockVersion {
             "name": "cropAnchor",
             "baseName": "cropAnchor",
             "type": "ImpulseBlockVersionCropAnchorEnum"
+=======
+            "name": "description",
+            "baseName": "description",
+            "type": "string"
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseBlockVersion.ts
         }    ];
 
     static getAttributeTypeMap() {
@@ -175,12 +176,3 @@ export class ImpulseBlockVersion {
     }
 }
 
-
-export type ImpulseBlockVersionResizeModeEnum = 'squash' | 'fit-short' | 'fit-long' | 'crop';
-export const ImpulseBlockVersionResizeModeEnumValues: string[] = ['squash', 'fit-short', 'fit-long', 'crop'];
-
-export type ImpulseBlockVersionResizeMethodEnum = 'lanczos3' | 'nearest';
-export const ImpulseBlockVersionResizeMethodEnumValues: string[] = ['lanczos3', 'nearest'];
-
-export type ImpulseBlockVersionCropAnchorEnum = 'top-left' | 'top-center' | 'top-right' | 'middle-left' | 'middle-center' | 'middle-right' | 'bottom-left' | 'bottom-center' | 'bottom-right';
-export const ImpulseBlockVersionCropAnchorEnumValues: string[] = ['top-left', 'top-center', 'top-right', 'middle-left', 'middle-center', 'middle-right', 'bottom-left', 'bottom-center', 'bottom-right'];

@@ -55,10 +55,6 @@ export class DSPMetadataResponse {
     */
     'windowIncreaseMs': number;
     /**
-    * Whether data was zero-padded when generating features.
-    */
-    'padZeros': boolean;
-    /**
     * Frequency of the original data in Hz.
     */
     'frequency': number;
@@ -122,11 +118,6 @@ export class DSPMetadataResponse {
             "name": "windowIncreaseMs",
             "baseName": "windowIncreaseMs",
             "type": "number"
-        },
-        {
-            "name": "padZeros",
-            "baseName": "padZeros",
-            "type": "boolean"
         },
         {
             "name": "frequency",

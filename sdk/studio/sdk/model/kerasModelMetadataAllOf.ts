@@ -43,9 +43,12 @@ export class KerasModelMetadataAllOf {
     */
     'modelValidationMetrics': Array<KerasModelMetadataMetrics>;
     'hasTrainedModel': boolean;
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasModelMetadataAllOf.ts
     'mode': KerasModelMetadataAllOfModeEnum;
     'objectDetectionLastLayer'?: ObjectDetectionLastLayer;
     'imageInputScaling': ImageInputScaling;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasModelMetadataAllOf.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -89,6 +92,7 @@ export class KerasModelMetadataAllOf {
             "name": "hasTrainedModel",
             "baseName": "hasTrainedModel",
             "type": "boolean"
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasModelMetadataAllOf.ts
         },
         {
             "name": "mode",
@@ -104,6 +108,8 @@ export class KerasModelMetadataAllOf {
             "name": "imageInputScaling",
             "baseName": "imageInputScaling",
             "type": "ImageInputScaling"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasModelMetadataAllOf.ts
         }    ];
 
     static getAttributeTypeMap() {
@@ -111,6 +117,9 @@ export class KerasModelMetadataAllOf {
     }
 }
 
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasModelMetadataAllOf.ts
 
 export type KerasModelMetadataAllOfModeEnum = 'classification' | 'regression' | 'object-detection' | 'visual-anomaly';
 export const KerasModelMetadataAllOfModeEnumValues: string[] = ['classification', 'regression', 'object-detection', 'visual-anomaly'];
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasModelMetadataAllOf.ts

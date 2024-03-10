@@ -12,6 +12,7 @@
 
 import { DevelopmentKeys } from './developmentKeys';
 import { Device } from './device';
+import { Download } from './download';
 import { GenericApiResponse } from './genericApiResponse';
 import { LatencyDevice } from './latencyDevice';
 import { Project } from './project';
@@ -23,8 +24,12 @@ import { ProjectInfoResponseAllOfDataSummaryPerCategory } from './projectInfoRes
 import { ProjectInfoResponseAllOfDeploySettings } from './projectInfoResponseAllOfDeploySettings';
 import { ProjectInfoResponseAllOfExperiments } from './projectInfoResponseAllOfExperiments';
 import { ProjectInfoResponseAllOfImpulse } from './projectInfoResponseAllOfImpulse';
+<<<<<<< HEAD:sdk/studio/sdk/model/projectInfoResponse.ts
 import { ProjectInfoResponseAllOfPerformance } from './projectInfoResponseAllOfPerformance';
 import { ProjectInfoResponseAllOfShowGettingStartedWizard } from './projectInfoResponseAllOfShowGettingStartedWizard';
+=======
+import { ProjectInfoResponseAllOfLatencyDevices } from './projectInfoResponseAllOfLatencyDevices';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/projectInfoResponse.ts
 import { ProjectInfoResponseAllOfUrls } from './projectInfoResponseAllOfUrls';
 import { ProjectPublicDataReadme } from './projectPublicDataReadme';
 import { User } from './user';
@@ -39,6 +44,7 @@ export class ProjectInfoResponse {
     */
     'error'?: string;
     'project': Project;
+    'downloads': Array<Download>;
     'developmentKeys': DevelopmentKeys;
     'impulse': ProjectInfoResponseAllOfImpulse;
     'devices': Array<Device>;
@@ -55,6 +61,7 @@ export class ProjectInfoResponse {
     'latencyDevices': Array<LatencyDevice>;
     'urls': ProjectInfoResponseAllOfUrls;
     'showCreateFirstImpulse': boolean;
+<<<<<<< HEAD:sdk/studio/sdk/model/projectInfoResponse.ts
     'showGettingStartedWizard': ProjectInfoResponseAllOfShowGettingStartedWizard;
     'performance': ProjectInfoResponseAllOfPerformance;
     'readme'?: ProjectPublicDataReadme;
@@ -90,6 +97,8 @@ export class ProjectInfoResponse {
     * Whether to show the actual sensor data in acquisition charts (only applies when you have structured labels)
     */
     'showSensorDataInAcquisitionGraph': boolean;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/projectInfoResponse.ts
 
     static discriminator: string | undefined = undefined;
 
@@ -108,6 +117,11 @@ export class ProjectInfoResponse {
             "name": "project",
             "baseName": "project",
             "type": "Project"
+        },
+        {
+            "name": "downloads",
+            "baseName": "downloads",
+            "type": "Array<Download>"
         },
         {
             "name": "developmentKeys",
@@ -173,6 +187,7 @@ export class ProjectInfoResponse {
             "name": "showCreateFirstImpulse",
             "baseName": "showCreateFirstImpulse",
             "type": "boolean"
+<<<<<<< HEAD:sdk/studio/sdk/model/projectInfoResponse.ts
         },
         {
             "name": "showGettingStartedWizard",
@@ -243,6 +258,8 @@ export class ProjectInfoResponse {
             "name": "showSensorDataInAcquisitionGraph",
             "baseName": "showSensorDataInAcquisitionGraph",
             "type": "boolean"
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/projectInfoResponse.ts
         }    ];
 
     static getAttributeTypeMap() {

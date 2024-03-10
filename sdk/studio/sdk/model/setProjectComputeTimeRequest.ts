@@ -18,14 +18,14 @@ export class SetProjectComputeTimeRequest {
     /**
     * New job limit in seconds.
     */
-    'jobLimitM': number;
+    'jobLimitS': number;
 
     static discriminator: string | undefined = undefined;
 
     static attributeTypeMap: Array<{name: string, baseName: string, type: string}> = [
         {
-            "name": "jobLimitM",
-            "baseName": "jobLimitM",
+            "name": "jobLimitS",
+            "baseName": "jobLimitS",
             "type": "number"
         }    ];
 

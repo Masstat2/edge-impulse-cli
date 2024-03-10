@@ -20,7 +20,10 @@ export class ModelVariantStats {
     * The learning block this model variant is from
     */
     'learnBlockId': number;
+<<<<<<< HEAD:sdk/studio/sdk/model/modelVariantStats.ts
     'learnBlockType': LearnBlockType;
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/modelVariantStats.ts
     /**
     * A map from actual labels to predicted labels, where actual labels are listed in `trainingLabels` and possible predicted labels are listed in `classificationLabels`.
     */
@@ -54,11 +57,14 @@ export class ModelVariantStats {
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/modelVariantStats.ts
             "name": "learnBlockType",
             "baseName": "learnBlockType",
             "type": "LearnBlockType"
         },
         {
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/modelVariantStats.ts
             "name": "confusionMatrix",
             "baseName": "confusionMatrix",
             "type": "{ [key: string]: { [key: string]: EvaluateResultValue; }; }"

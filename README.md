@@ -17,9 +17,7 @@ This package consists of four tools (click to see their respective documentation
 1. Install [Node.js](https://nodejs.org/en/) v12 or higher on your host computer.
 2. Install the CLI tools via:
 
-    ```
-    $ npm install -g edge-impulse-cli
-    ```
+    npm install -g edge-impulse-cli
 
 Afterwards you should have the tools available in your PATH.
 
@@ -30,20 +28,19 @@ If you're making changes to the CLI you can build from source.
 1. Clone this repository:
 
     ```
-    $ git clone https://github.com/edgeimpulse/edge-impulse-cli
+    git clone https://github.com/edgeimpulse/edge-impulse-cli
     ```
 
 1. Install the dependencies:
 
     ```
-    $ npm install
+    npm install
     ```
 
 1. Build and link the application:
 
-    ```
-    $ npm run build
-    $ npm link
+    npm run build
+    npm link
     ```
 
 ## Debugging the serial daemon
@@ -62,8 +59,8 @@ Then build from source.
 If you receive the following error: `The tools version "2.0" is unrecognized. Available tools versions are "4.0"`, launch a new command window as administrator and run:
 
 ```
-$ npm install --global --production windows-build-tools
-$ npm config set msvs_version 2015 --global
+npm install --global --production windows-build-tools
+npm config set msvs_version 2015 --global
 ```
 
 ### EACCES: permission denied, access '/usr/local/lib/node_modules' (macOS)
@@ -71,5 +68,5 @@ $ npm config set msvs_version 2015 --global
 This is indication that the `node_modules` is not owned by you, but rather by root. This is probably not what you want. To fix this, run:
 
 ```
-$ sudo chown -R $USER /usr/local/lib/node_modules
+sudo chown -R $USER /usr/local/lib/node_modules
 ```

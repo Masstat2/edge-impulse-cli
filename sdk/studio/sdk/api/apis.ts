@@ -58,10 +58,17 @@ export * from './projectsApi';
 import { ProjectsApi } from './projectsApi';
 export * from './rawDataApi';
 import { RawDataApi } from './rawDataApi';
+<<<<<<< HEAD:sdk/studio/sdk/api/apis.ts
 export * from './themesApi';
 import { ThemesApi } from './themesApi';
 export * from './thirdPartyAuthApi';
 import { ThirdPartyAuthApi } from './thirdPartyAuthApi';
+=======
+export * from './requiresSudoApi';
+import { RequiresSudoApi } from './requiresSudoApi';
+export * from './supportsRangeApi';
+import { SupportsRangeApi } from './supportsRangeApi';
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/apis.ts
 export * from './uploadPortalApi';
 import { UploadPortalApi } from './uploadPortalApi';
 export * from './userApi';
@@ -88,4 +95,8 @@ export interface RequestDetailedFile {
 
 export type RequestFile = RequestDetailedFile;
 
+<<<<<<< HEAD:sdk/studio/sdk/api/apis.ts
 export const APIS = [AdminApi, AuthApi, CDNApi, ClassifyApi, DSPApi, DeploymentApi, DevicesApi, EmailVerificationApi, ExportApi, FeatureFlagsApi, HealthApi, ImpulseApi, JobsApi, LearnApi, LoginApi, MetricsApi, OptimizationApi, OrganizationBlocksApi, OrganizationCreateProjectApi, OrganizationDataApi, OrganizationDataCampaignsApi, OrganizationJobsApi, OrganizationPipelinesApi, OrganizationPortalsApi, OrganizationRequiresAdminApi, OrganizationRequiresWhitelabelAdminApi, OrganizationsApi, PerformanceCalibrationApi, ProjectsApi, RawDataApi, ThemesApi, ThirdPartyAuthApi, UploadPortalApi, UserApi, WhitelabelsApi];
+=======
+export const APIS = [AdminApi, AllowsReadOnlyApi, AuthApi, CDNApi, ClassifyApi, DSPApi, DeploymentApi, DevicesApi, ExportApi, HealthApi, ImpulseApi, JobsApi, LearnApi, LoginApi, OptimizationApi, OrganizationBlocksApi, OrganizationCreateProjectApi, OrganizationDataApi, OrganizationJobsApi, OrganizationPortalsApi, OrganizationRequiresAdminApi, OrganizationsApi, ProjectsApi, RawDataApi, RequiresSudoApi, SupportsRangeApi, UploadPortalApi, UserApi];
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/api/apis.ts

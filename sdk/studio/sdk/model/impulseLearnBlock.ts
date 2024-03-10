@@ -17,7 +17,22 @@ export class ImpulseLearnBlock {
     * Identifier for this block. Make sure to up this number when creating a new block, and don\'t re-use identifiers. If the block hasn\'t changed, keep the ID as-is. ID must be unique across the project and greather than zero (>0).
     */
     'id': number;
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseLearnBlock.ts
     'type': LearnBlockType;
+=======
+    /**
+    * Whether this block is the primary version of its base block.
+    */
+    'primaryVersion': boolean;
+    /**
+    * The version number of the original block this version was based on. If this is an original block, will be undefined.
+    */
+    'baseBlockId'?: number;
+    /**
+    * Block type (either keras, keras-transfer-image, keras-regression or anomaly)
+    */
+    'type': string;
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseLearnBlock.ts
     /**
     * Block name, will be used in menus. If a block has a baseBlockId, this field is ignored and the base block\'s name is used instead.
     */
@@ -31,6 +46,7 @@ export class ImpulseLearnBlock {
     */
     'title': string;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseLearnBlock.ts
     * Whether this block is the primary version of its base block.
     */
     'primaryVersion': boolean;
@@ -67,17 +83,11 @@ export class ImpulseLearnBlock {
     */
     'db'?: boolean;
     /**
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseLearnBlock.ts
     * A short description of the block version, displayed in the block versioning UI
     */
     'description'?: string;
-    /**
-    * The system component that created the block version (createImpulse | clone | tuner). Cannot be set via API.
-    */
-    'createdBy'?: string;
-    /**
-    * The datetime that the block version was created. Cannot be set via API.
-    */
-    'createdAt'?: Date;
 
     static discriminator: string | undefined = undefined;
 
@@ -85,6 +95,16 @@ export class ImpulseLearnBlock {
         {
             "name": "id",
             "baseName": "id",
+            "type": "number"
+        },
+        {
+            "name": "primaryVersion",
+            "baseName": "primaryVersion",
+            "type": "boolean"
+        },
+        {
+            "name": "baseBlockId",
+            "baseName": "baseBlockId",
             "type": "number"
         },
         {
@@ -108,6 +128,7 @@ export class ImpulseLearnBlock {
             "type": "string"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/impulseLearnBlock.ts
             "name": "primaryVersion",
             "baseName": "primaryVersion",
             "type": "boolean"
@@ -153,19 +174,11 @@ export class ImpulseLearnBlock {
             "type": "boolean"
         },
         {
+=======
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/impulseLearnBlock.ts
             "name": "description",
             "baseName": "description",
             "type": "string"
-        },
-        {
-            "name": "createdBy",
-            "baseName": "createdBy",
-            "type": "string"
-        },
-        {
-            "name": "createdAt",
-            "baseName": "createdAt",
-            "type": "Date"
         }    ];
 
     static getAttributeTypeMap() {

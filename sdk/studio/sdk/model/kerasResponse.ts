@@ -38,7 +38,14 @@ export class KerasResponse {
     */
     'trained': boolean;
     'name': string;
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponse.ts
     'type'?: LearnBlockType;
+=======
+    /**
+    * The type of Keras block (keras, keras-transfer-image, keras-regression). Each behaves differently.
+    */
+    'type'?: KerasResponseTypeEnum;
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponse.ts
     /**
     * The Keras script. This script might be empty if the mode is visual.
     */
@@ -65,6 +72,7 @@ export class KerasResponse {
     */
     'learningRate': number;
     /**
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponse.ts
     * The batch size used during training.
     */
     'batchSize'?: number;
@@ -82,6 +90,9 @@ export class KerasResponse {
     'trainTestSplit'?: number;
     /**
     * Whether to automatically balance class weights, use this for skewed datasets.
+=======
+    * Possible learning rates (between 0 and 1).
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponse.ts
     */
     'autoClassWeights'?: boolean;
     /**
@@ -184,6 +195,7 @@ export class KerasResponse {
             "type": "number"
         },
         {
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponse.ts
             "name": "batchSize",
             "baseName": "batchSize",
             "type": "number"
@@ -207,6 +219,11 @@ export class KerasResponse {
             "name": "autoClassWeights",
             "baseName": "autoClassWeights",
             "type": "boolean"
+=======
+            "name": "learningRates",
+            "baseName": "learningRates",
+            "type": "Array<number>"
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponse.ts
         },
         {
             "name": "findLearningRate",
@@ -275,5 +292,11 @@ export class KerasResponse {
 }
 
 
+<<<<<<< HEAD:sdk/studio/sdk/model/kerasResponse.ts
+=======
+export type KerasResponseTypeEnum = 'keras' | 'keras-transfer-image' | 'keras-regression';
+export const KerasResponseTypeEnumValues: string[] = ['keras', 'keras-transfer-image', 'keras-regression'];
+
+>>>>>>> parent of 840c0ea (Release v1.13.10):sdk/studio/model/kerasResponse.ts
 export type KerasResponseModeEnum = 'visual' | 'expert';
 export const KerasResponseModeEnumValues: string[] = ['visual', 'expert'];
